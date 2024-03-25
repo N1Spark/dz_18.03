@@ -1,0 +1,78 @@
+﻿<Window x:Class="dz_18._03.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dz_18._03"
+        mc:Ignorable="d"
+        Title="IT Company" Height="520" Width="1054">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="34*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Padding="5" Margin="10,10,0,0" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left"  Width="300px" Header="Добавление сотрудника" Grid.ColumnSpan="2">
+            <StackPanel>
+                <DockPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <Label Margin="0 5">Имя</Label>
+                            <Label Margin="0 5">Фамилие</Label>
+                            <Label Margin="0 5">Возраст</Label>
+                            <Label Margin="0 5">Зарплата</Label>
+                            <Label Margin="0 5">Должнось:</Label>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBox Margin="0 9" VerticalAlignment="Center" Text="{Binding NameEmployee, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                            <TextBox Margin="0 9" VerticalAlignment="Center" Text="{Binding SurnameEmployee, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                            <TextBox Margin="0 9" VerticalAlignment="Center" Text="{Binding AgeEmployee, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                            <TextBox Margin="0 9" VerticalAlignment="Center" Text="{Binding SalaryEmployee, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                            <TextBox Margin="0 9" VerticalAlignment="Center" Text="{Binding PositionIdEmployee, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+                        </StackPanel>
+                    </Grid>
+                </DockPanel>
+                <Button Command="{Binding AddNewEmployee}" Margin="0 10">Добавить нового сотрудника</Button>
+
+            </StackPanel>
+
+        </GroupBox>
+        <GroupBox Padding="5" Margin="110,10,0,0" Height="82" VerticalAlignment="Top" HorizontalAlignment="Left"  Width="280" Header="Добавление должности" Grid.Column="1">
+            <StackPanel>
+                <TextBox Text="{Binding Nameposition, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Button Command="{Binding AddNewPosition}" Margin="0 10">Добавить</Button>
+            </StackPanel>
+
+        </GroupBox>
+        <GroupBox Padding="5" Margin="110,285,0,0" Height="96" VerticalAlignment="Top" HorizontalAlignment="Left"  Width="280" Header="Удаление должности" Grid.Column="1">
+            <StackPanel>
+                <TextBox Text="{Binding EnterPosition, UpdateSourceTrigger=PropertyChanged}" Margin="5px"></TextBox>
+                <Button Command="{Binding DeletePosition}" Margin="5">Удалить</Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Padding="5" Margin="0,97,443,0" Height="183" VerticalAlignment="Top" HorizontalAlignment="Right"  Width="280" Header="Изменение должности" Grid.Column="1">
+            <StackPanel>
+                <Label>Введите должность:</Label>
+                <TextBox Text="{Binding OldPositionChange, UpdateSourceTrigger=PropertyChanged}"  Margin="5px"></TextBox>
+                <Label>Введите новую должность</Label>
+                <TextBox Text="{Binding NewPositionChange, UpdateSourceTrigger=PropertyChanged}" Margin="5px"></TextBox>
+                <Button  Command="{Binding CangeCommandPosition}" Margin="0,15,0,0">Изменить</Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Padding="5" Margin="0,268,744,0" Height="196" VerticalAlignment="Top" HorizontalAlignment="Right"  Width="300" Header="Поиск сотрудника" Grid.ColumnSpan="2">
+            <StackPanel Height="152">
+                <TextBox Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" Margin="5px"></TextBox>
+                <Button Command="{Binding ShowAll}" Content="Показать всех " Margin="0,15,0,0"></Button>
+                <Button Command="{Binding FindByName}" Content="Поиск по имени " Margin="0,15,0,0"></Button>
+                <Button Command="{Binding SearchEmployeePosition}" Content="Поиск по должности " Margin="0,15,0,0"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Результат" Margin="413,10,10,30" Grid.Column="1">
+            <TextBlock TextWrapping="Wrap" Height="396" Text="{Binding UserInfo}"/>
+        </GroupBox>
+    </Grid>
+</Window>
